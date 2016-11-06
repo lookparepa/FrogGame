@@ -6,19 +6,21 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen extends ScreenAdapter{
 	private FrogGame frogGame;
-	private int x;
-    private int y;
-    
+	
 	private Texture frogImg;
+	
+	private Frog frog;
 	
 	public GameScreen(FrogGame frogGame) {
 		this.frogGame = frogGame;
+		
 		frogImg = new Texture("frog.png");
-		x = 100;
-        y = 100;
+		
+		frog = new Frog(100,100);
 	}
 
 
@@ -29,22 +31,23 @@ public class GameScreen extends ScreenAdapter{
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         SpriteBatch batch = frogGame.batch;
         batch.begin();
-        batch.draw(frogImg, x, y);
+        Vector2 pos = frog.getPosition();
+        batch.draw(frogImg, pos.x, pos.y);
         batch.end();
     }
 	
 	private void update(float delta){
 		if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-            x -= 10;
+			frog.move(Frog.DIRECTION_LEFT);
         }
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            x += 10;
+            frog.move(Frog.DIRECTION_RIGHT);        
         }
         if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-            y -= 10;
+            frog.move(Frog.DIRECTION_DOWN);
         }
         if(Gdx.input.isKeyPressed(Keys.UP)) {
-            y += 10;
+            frog.move(Frog.DIRECTION_UP);
         }
 	}
 	
