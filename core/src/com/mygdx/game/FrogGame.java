@@ -12,8 +12,8 @@ public class FrogGame extends Game {
 		setScreen(new GameScreen(this));
 	}
 	 @Override
-	    public void render () {
-	        super.render();
+	public void render () {
+	    super.render();
 	}
 	
 	@Override
