@@ -31,16 +31,18 @@ public class CarRenderer {
 		car2ImgRegion = new TextureRegion(car2Img);
 	}
 	
-	
-@SuppressWarnings("static-access")
 public void render(float delta) {
+	int c = 0;
         for (Car car : this.cars) {
-        	batch.draw(carImgRegion,
-        		car.position.x,car.position.y,
-        		0,0,
-        		carImg.getWidth(),carImg.getHeight(),
-        		(float)0.4,(float)0.4,
-        		0);
+        	System.out.println(car.getPosition().x + " " + car.getPosition().y);
+        		batch.draw(carImgRegion,
+        				car.getPosition().x,car.getPosition().y,
+        				0,0,
+        				carImg.getWidth(),carImg.getHeight(),
+        				(float)0.4,(float)0.4,
+        				0);
+ 
+	
         }
         
         
