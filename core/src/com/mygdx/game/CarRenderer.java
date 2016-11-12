@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import java.util.List;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -13,13 +15,15 @@ public class CarRenderer {
 	Texture car2Img;
 	TextureRegion car2ImgRegion;
 	
+	
+	
 	SpriteBatch batch;
 	Vector2 pos;
-	World world;
+	List <Car> cars;
 	
-	public CarRenderer(SpriteBatch batch , World world){
-		this.world = world;
+	public CarRenderer(SpriteBatch batch , List <Car> cars){
 		this.batch = batch;
+		this.cars = cars;
 		carImg = new Texture("car.png");
 		carImgRegion = new TextureRegion(carImg);
 		
@@ -28,24 +32,18 @@ public class CarRenderer {
 	}
 	
 	
+@SuppressWarnings("static-access")
 public void render(float delta) {
-		
-        batch.begin();
-        pos = world.getCar().getPosition();
-        batch.draw(carImgRegion,
-        		0,55,
+        for (Car car : this.cars) {
+        	batch.draw(carImgRegion,
+        		car.position.x,car.position.y,
         		0,0,
         		carImg.getWidth(),carImg.getHeight(),
         		(float)0.4,(float)0.4,
         		0);
+        }
         
-        batch.draw(car2ImgRegion,
-        		800,110,
-        		0,0,
-        		car2Img.getWidth(),car2Img.getHeight(),
-        		(float)0.4,(float)0.4,
-        		0);
-        batch.end();
+        
         
     }
 }

@@ -12,26 +12,27 @@ public class WorldRenderer{
 	SpriteBatch batch;
 	Texture roadImg;
 	Vector2 pos;
+	CarRenderer carRenderer;
 	public WorldRenderer(FrogGame frogGame, World world) {
         this.frogGame = frogGame;
         
         batch = frogGame.batch;
  
         this.world = world;
-        pos = new Vector2 ();
- 
-        frogImg = new Texture("frog.png");
+        pos = new Vector2();
+    	carRenderer = new CarRenderer (frogGame.batch, this.world.cars);        
+
+    	frogImg = new Texture("frog.png");
         roadImg = new Texture("road.png");
     }
 	
 	public void render(float delta) {
-		
         batch.begin();
         batch.draw(roadImg, 0,0,roadImg.getWidth()/2,roadImg.getHeight()/2);
         pos = world.getFrog().getPosition();
-        batch.draw(frogImg, pos.x, pos.y);
-        batch.end();
         
+        batch.draw(frogImg, pos.x, pos.y);
+        carRenderer.render(delta);
+        batch.end();
     }
-
 }
