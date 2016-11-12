@@ -7,8 +7,8 @@ import com.mygdx.game.FrogGame;
 public class DesktopLauncher {
     public static void main (String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.width = 900;
-        config.height = 500;
+        config.width = FrogGame.WIDTH;
+        config.height = FrogGame.HEIGHT;
         new LwjglApplication(new FrogGame(), config);
     }
 }

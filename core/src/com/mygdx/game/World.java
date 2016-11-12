@@ -10,25 +10,11 @@ public class World {
 	World(FrogGame frogGame){
 		this.frogGame = frogGame;
 		
-		frog = new Frog(100,100);
+		frog = new Frog(frogGame.WIDTH/2, 0);
 	}
 	
 	Frog getFrog(){
 		return frog;
 	}
 	
-	public void update(float delta) {
-        if(Gdx.input.isKeyPressed(Keys.UP)) {
-            frog.move(Frog.DIRECTION_UP);
-        }
-        if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-            frog.move(Frog.DIRECTION_DOWN);
-        }
-        if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            frog.move(Frog.DIRECTION_RIGHT);
-        }
-        if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-            frog.move(Frog.DIRECTION_LEFT);
-        }
-	}
 }

@@ -14,9 +14,9 @@ public class Frog {
 	}
 	private static final int[][] DIR_OFFSETS = new int[][]{
 		{0,0},
-		{0,-1},
-		{1,0},
 		{0,1},
+		{1,0},
+		{0,-1},
 		{-1,0}	
 	};
 	public static final int DIRECTION_UP = 1;
