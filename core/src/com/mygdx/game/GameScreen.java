@@ -12,12 +12,14 @@ public class GameScreen extends ScreenAdapter {
 	Frog frog;
 	World world;
 	WorldRenderer worldRenderer;
+	CarRenderer carRenderer;
  
     public GameScreen(FrogGame frogGame) {
     	
     	world = new World(frogGame); 
     	worldRenderer = new WorldRenderer(frogGame, world);
     	frog = world.getFrog();
+    	carRenderer = new CarRenderer(frogGame.batch , world);
     }
         
     @Override
@@ -27,6 +29,8 @@ public class GameScreen extends ScreenAdapter {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         worldRenderer.render(delta);
+        carRenderer.render(delta);
+        
     	
     }
     

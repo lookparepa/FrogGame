@@ -6,9 +6,6 @@ public class Car {
 	
 	
 	public static Vector2 position;
-	public void car(){
-		
-	}
 	
 	public Car(int x, int y){
 		position = new Vector2(x,y);

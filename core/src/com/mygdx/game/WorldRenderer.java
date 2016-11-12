@@ -27,7 +27,7 @@ public class WorldRenderer{
 	public void render(float delta) {
 		
         batch.begin();
-        batch.draw(roadImg, 0,0,1200,600 );
+        batch.draw(roadImg, 0,0,roadImg.getWidth()/2,roadImg.getHeight()/2);
         pos = world.getFrog().getPosition();
         batch.draw(frogImg, pos.x, pos.y);
         batch.end();
