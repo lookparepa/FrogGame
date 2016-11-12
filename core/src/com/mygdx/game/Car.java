@@ -7,8 +7,8 @@ public class Car {
 	
 	public static Vector2 position;
 	
-	public Car(int x, int y){
-		position = new Vector2(x,y);
+	public Car(){
+		position = new Vector2();
 	}
 	
 	public Vector2 getPosition(){
