@@ -20,7 +20,7 @@ public class WorldRenderer{
  
         this.world = world;
         pos = new Vector2();
-    	carRenderer = new CarRenderer (frogGame.batch, this.world.cars);        
+    	carRenderer = new CarRenderer (frogGame.batch, this.world.cars,this.world.car2s);        
 
     	frogImg = new Texture("frog.png");
         roadImg = new Texture("road.png");
@@ -33,8 +33,8 @@ public class WorldRenderer{
         
         pos = world.getFrog().getPosition();
         batch.draw(frogImg, pos.x, pos.y);
-        
-        carRenderer.render(delta);
+		carRenderer.render(delta);
+		
         
         batch.end();
     }

@@ -20,10 +20,12 @@ public class CarRenderer {
 	SpriteBatch batch;
 	Vector2 pos;
 	List <Car> cars;
+	List <Car2> car2s;
 	
-	public CarRenderer(SpriteBatch batch , List <Car> cars){
+	public CarRenderer(SpriteBatch batch , List <Car> cars, List <Car2> car2s){
 		this.batch = batch;
 		this.cars = cars;
+		this.car2s = car2s;
 		carImg = new Texture("car.png");
 		carImgRegion = new TextureRegion(carImg);
 		
@@ -32,7 +34,7 @@ public class CarRenderer {
 	}
 	
 public void render(float delta) {
-	//int c = 0;
+	
         for (Car car : this.cars) {
         	//System.out.println(car.getPosition().x + " " + car.getPosition().y);
         		batch.draw(carImgRegion,
@@ -41,9 +43,17 @@ public void render(float delta) {
         				carImg.getWidth(),carImg.getHeight(),
         				(float)0.4,(float)0.4,
         				0);
- 
-	
         }
+        
+       for (Car2 car2 : this.car2s) {
+        	
+				batch.draw(car2ImgRegion,
+        				car2.getPosition().x,car2.getPosition().y,
+        				0,0,
+        				car2Img.getWidth(),car2Img.getHeight(),
+        				(float)0.4,(float)0.4,
+        				0);
+        } 
         
         
         
