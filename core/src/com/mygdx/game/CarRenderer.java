@@ -32,9 +32,9 @@ public class CarRenderer {
 	}
 	
 public void render(float delta) {
-	int c = 0;
+	//int c = 0;
         for (Car car : this.cars) {
-        	System.out.println(car.getPosition().x + " " + car.getPosition().y);
+        	//System.out.println(car.getPosition().x + " " + car.getPosition().y);
         		batch.draw(carImgRegion,
         				car.getPosition().x,car.getPosition().y,
         				0,0,

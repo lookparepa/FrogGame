@@ -18,19 +18,8 @@ public class World {
 			cars.add(new Car());
 		}
 	}
-	
-//	I have a pen, I have an apple.
-//	Uh! Apple Pen
-//	I have a pen, I have pineapple.
-//	Uh! Pineapple Pen
-//	Apple pen...
-//	Pineapple pen... uh!
-//
-//	Pen Pineapple Apple Pen!
-//
-//	Pen Pineapple Apple Pen!
-
 	Frog getFrog(){
 		return frog;
 	}
+	
 }
