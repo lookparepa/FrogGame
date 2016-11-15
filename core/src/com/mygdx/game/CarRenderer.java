@@ -9,10 +9,10 @@ import com.badlogic.gdx.math.Vector2;
 
 public class CarRenderer {
 	
-	Texture carImg;
+	static Texture carImg;
 	TextureRegion carImgRegion;
 	
-	Texture car2Img;
+	static Texture car2Img;
 	TextureRegion car2ImgRegion;
 	
 	

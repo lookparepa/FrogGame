@@ -25,7 +25,7 @@ public class Frog {
     public static final int DIRECTION_LEFT = 4;
     public static final int DIRECTION_STILL = 0;
     
-    public static final int SPEED = 2;
+    public static final float SPEED = (float) 3;
 
     public void move(int dir) { 
         position.x += SPEED * DIR_OFFSETS[dir][0];

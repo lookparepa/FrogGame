@@ -14,17 +14,17 @@ public class Car2 {
 		position = new Vector2();
 		temp = random.nextInt(3);
 		switch (temp) {
-			case 0: position.x = (float) (8.0/9*FrogGame.WIDTH); 
+			case 0: position.x = (float) (random.nextInt(100)*500*0.4-10000); 
 					position.y = (float) (5.0/18*FrogGame.HEIGHT);
-					speed[carNumber] = 7;
+					speed[carNumber] = 12;
 					break;
-			case 1: position.x = (float) (8.0/9*FrogGame.WIDTH); 
+			case 1: position.x = (float) (random.nextInt(100)*500*0.4-10000); 
 					position.y = (float) (10.0/18*FrogGame.HEIGHT);
-					speed[carNumber] = 5;
+					speed[carNumber] = 10;
 					break;
-			case 2: position.x = (float) (8.0/9*FrogGame.WIDTH); 
+			case 2: position.x = (float) (random.nextInt(100)*500*0.4-10000); 
 					position.y = (float) (15.0/18*FrogGame.HEIGHT);
-					speed[carNumber] = 6;
+					speed[carNumber] = 8;
 					break;
 		}
 	}
@@ -35,6 +35,9 @@ public class Car2 {
 	
 
     public void move(int i) { 
+    	if(position.x <= -300){
+    		position.x += 10000;
+    	}
         position.x -= speed[i]; 
     }
 
