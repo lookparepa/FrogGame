@@ -13,6 +13,8 @@ public class WorldRenderer{
 	Texture roadImg;
 	Vector2 pos;
 	CarRenderer carRenderer;
+	Texture carImg;
+	Texture car2Img;
 	public WorldRenderer(FrogGame frogGame, World world) {
         this.frogGame = frogGame;
         
@@ -37,5 +39,9 @@ public class WorldRenderer{
 		
         
         batch.end();
+        
+//        if(carImg.overlaps(frogImg)) {
+//            frogImg.dispose();
+//        }
     }
 }
