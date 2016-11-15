@@ -7,6 +7,7 @@ public class FrogGame extends Game {
 	public SpriteBatch batch;
 	public static int HEIGHT = 450;
 	public static int WIDTH = 900;
+	public static int TOTALCAR = 100;
 	@Override
 	public void create () {
 		batch = new SpriteBatch();

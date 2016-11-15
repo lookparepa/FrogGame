@@ -14,9 +14,9 @@ public class World {
 	World(FrogGame frogGame) {
 		this.frogGame = frogGame;
 		frog = new Frog(frogGame.WIDTH/2, 0);
-		for (int i = 0 ; i < 100 ; i++ ) {
-			cars.add(new Car());
-			car2s.add(new Car2());
+		for (int i = 0 ; i < frogGame.TOTALCAR ; i++ ) {
+			cars.add(new Car(i));
+			car2s.add(new Car2(i));
 		}
 	}
 	Frog getFrog(){

@@ -42,6 +42,15 @@ public class GameScreen extends ScreenAdapter {
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
         	frog.move(Frog.DIRECTION_LEFT);
         }
+        int i = 0;
+        for (Car car : this.world.cars) {
+        	car.move(i++);
+        } 
+        i = 0;
+        for (Car2 car2 : this.world.car2s) {
+        	car2.move(i++);
+        } 
+       
 	}
     
     
