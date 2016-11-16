@@ -39,11 +39,11 @@ public class Car {
 	
 	
 
-    public void move(int i) { 
+    public float move(int i) { 
     	if(position.x >= FrogGame.WIDTH+300){
     		position.x -= 10000;
     	}
         position.x += speed[i]; 
-        System.out.println(speed);
+        return position.x;
     }
 }

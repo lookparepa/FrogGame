@@ -8,7 +8,7 @@ public class WorldRenderer{
 	
 	FrogGame frogGame;
 	World world;
-	Texture frogImg;
+	static Texture frogImg;
 	SpriteBatch batch;
 	Texture roadImg;
 	Vector2 pos;
@@ -34,7 +34,7 @@ public class WorldRenderer{
         batch.draw(roadImg, 0,0,roadImg.getWidth()/2,roadImg.getHeight()/2);
         
         pos = world.getFrog().getPosition();
-        batch.draw(frogImg, pos.x, pos.y);
+        batch.draw(frogImg, pos.x-20, pos.y);
 		carRenderer.render(delta);
 		
         

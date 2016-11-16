@@ -5,8 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 public class Frog {
 	public static Vector2 position;
 	
-	public Frog(int x, int y){
-		position = new Vector2(x,y);
+	public Frog(){
+		position = new Vector2(FrogGame.WIDTH/2, 0);
 	}
 	
 	public Vector2 getPosition(){
