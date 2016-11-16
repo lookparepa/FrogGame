@@ -6,7 +6,7 @@ public class Frog {
 	public static Vector2 position;
 	
 	public Frog(){
-		position = new Vector2(FrogGame.WIDTH/2, 0);
+		position = new Vector2(FrogGame.WIDTH/2-20, 0);
 	}
 	
 	public Vector2 getPosition(){
