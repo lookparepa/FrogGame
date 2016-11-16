@@ -81,6 +81,8 @@ public class GameScreen extends ScreenAdapter {
         i = 0;
         for (Rectangle car1Rectangle : this.car1sRectangle) {
         	if (car1Rectangle.overlaps(frogRectangle)) {
+        		frog.position.x = (FrogGame.WIDTH/2);
+        		frog.position.y = 0;
         	
     		//System.out.println(car1Rectangle.x);
 			}
