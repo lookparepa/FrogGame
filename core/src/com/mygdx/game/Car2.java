@@ -34,11 +34,12 @@ public class Car2 {
 	}
 	
 
-    public void move(int i) { 
+    public float move(int i) { 
     	if(position.x <= -300){
     		position.x += 10000;
     	}
-        position.x -= speed[i]; 
+        position.x -= speed[i];
+        return position.x;
     }
 
 }

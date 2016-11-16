@@ -17,14 +17,16 @@ public class GameScreen extends ScreenAdapter {
 	WorldRenderer worldRenderer;
 	Rectangle frogRectangle = new Rectangle();
 	Array<Rectangle> car1sRectangle = new Array<Rectangle>();
-	Array<Rectangle> cars2Rectangle;
+	Array<Rectangle> car2sRectangle = new Array<Rectangle>();
 	Texture frogImg;
 	Texture carImg;
+	Texture car2Img;
 
  
     public GameScreen(FrogGame frogGame) {
     	frogImg = new Texture("frog.png");
     	carImg = new Texture("car.png");
+    	car2Img = new Texture("car2.png");
     	world = new World(frogGame);
     	setCarsRectangleValue();
     	worldRenderer = new WorldRenderer(frogGame, world);
@@ -59,22 +61,36 @@ public class GameScreen extends ScreenAdapter {
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
         	frog.move(Frog.DIRECTION_LEFT);
         }
+        
         frogRectangle.x = frog.position.x;
     	frogRectangle.y = frog.position.y;
+    	
         int i = 0;
+        
         for (Car car : this.world.cars) {
         	car1sRectangle.get(i).x = car.move(i);
         	i++;
         } 
+        
         i = 0;
         for (Car2 car2 : this.world.car2s) {
-        	car2.move(i++);
+        	car2sRectangle.get(i).x = car2.move(i);
+        	i++;
         } 
+        
         i = 0;
         for (Rectangle car1Rectangle : this.car1sRectangle) {
         	if (car1Rectangle.overlaps(frogRectangle)) {
         	
-    		System.out.println(car1Rectangle.x);
+    		//System.out.println(car1Rectangle.x);
+			}
+        } 
+        
+        i = 0;
+        for (Rectangle car2Rectangle : this.car2sRectangle) {
+        	if (car2Rectangle.overlaps(frogRectangle)) {
+        	
+    		System.out.println(car2Rectangle.x);
 			}
         } 
 	}
@@ -93,6 +109,15 @@ public class GameScreen extends ScreenAdapter {
     		car1Rectangle.width = (float) 0.4*carImg.getWidth();
     		car1Rectangle.height = (float) 0.4*carImg.getHeight();
     		car1sRectangle.add(car1Rectangle);
+    		
+    	for (Car2 car2: this.world.car2s)	{
+        	Rectangle car2Rectangle = new Rectangle();
+        	car2Rectangle.x = car2.getPosition().x;
+       		car2Rectangle.y = car2.getPosition().y;
+       		car2Rectangle.width = (float) 0.4*car2Img.getWidth();
+       		car2Rectangle.height = (float) 0.4*car2Img.getHeight();
+       		car2sRectangle.add(car2Rectangle);	
     	}
     }
+}
 }
