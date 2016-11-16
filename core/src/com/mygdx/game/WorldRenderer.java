@@ -17,6 +17,8 @@ public class WorldRenderer{
 	Texture carImg;
 	Texture car2Img;
 	Texture frosstheroadImg;
+	Texture winImg;
+	Texture gameoverImg;
 	BitmapFont font;
 	public WorldRenderer(FrogGame frogGame, World world) {
         this.frogGame = frogGame;
@@ -30,6 +32,8 @@ public class WorldRenderer{
     	frogImg = new Texture("frog.png");
     	frosstheroadImg = new Texture("fross.png");
         roadImg = new Texture("road.png");
+        winImg = new Texture("congratulations.png");
+        gameoverImg = new Texture("gameover.png");
         font = new BitmapFont();
     }
 	
@@ -54,6 +58,18 @@ public class WorldRenderer{
 	public void renderGameTitle(){
 		batch.begin();
 		batch.draw(frosstheroadImg,frogGame.WIDTH/2-frosstheroadImg.getWidth()/2,frogGame.HEIGHT/2-frosstheroadImg.getHeight()/2);
+		batch.end();
+	}
+	
+	public void renderGameEnd(){
+		batch.begin();
+		batch.draw(gameoverImg,frogGame.WIDTH/2-gameoverImg.getWidth()/2,frogGame.HEIGHT/2-gameoverImg.getHeight()/2);
+		batch.end();
+	}
+	
+	public void renderWinGame(){
+		batch.begin();
+		batch.draw(winImg,frogGame.WIDTH/2-winImg.getWidth()/2,frogGame.HEIGHT/2-winImg.getHeight()/2);
 		batch.end();
 	}
 }

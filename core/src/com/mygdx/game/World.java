@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class World {
 	Frog frog;
 	FrogGame frogGame;
+	int life = 10;
 	
 	List <Car> cars = new ArrayList <Car> ();
 	List <Car2> car2s = new ArrayList <Car2> ();	

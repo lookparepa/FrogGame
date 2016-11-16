@@ -34,7 +34,6 @@ public class GameScreen extends ScreenAdapter {
     	car2Img = new Texture("car2.png");
     	
     	world = new World(frogGame);
-    	font = new BitmapFont();
     	batch = frogGame.batch;
     	setCarsRectangleValue();
     	worldRenderer = new WorldRenderer(frogGame, world);
@@ -59,6 +58,10 @@ public class GameScreen extends ScreenAdapter {
         		a++;
         	}
         }
+        
+        System.out.println(world.life);
+        checkLife();
+        winGame();
     }
     
     
@@ -83,34 +86,25 @@ public class GameScreen extends ScreenAdapter {
     	
     	
         int i = 0;
-//        batch.begin();
         for (Car car : this.world.cars) {
         	car1sRectangle.get(i).x = car.move(i);
-//        	font.draw(batch, "x" + car1sRectangle.get(i).x + "   y" + car1sRectangle.get(i).y 
-//        			, car1sRectangle.get(i).x, car1sRectangle.get(i).y);
-
         	i++;
         } 
         
         i = 0;
         for (Car2 car2 : this.world.car2s) {
         	car2sRectangle.get(i).x = car2.move(i);
-        	System.out.println("car2.move  " + car2.move(i) + "   car2sRec  " + car2sRectangle.get(i).x );
-//            font.draw(batch, "x" + car2sRectangle.get(i).x + "   y" + car2sRectangle.get(i).y 
-//            		, car2sRectangle.get(i).x, car2sRectangle.get(i).y);
             i++;
         } 
-//        batch.end();
-
-        
         
         i = 0;
         for (Rectangle car1Rectangle : this.car1sRectangle) {
         	if (car1Rectangle.overlaps(frogRectangle)) {
         		frog.position.x = (FrogGame.WIDTH/2-20);
         		frog.position.y = 0;
+        		world.life--;
         		
-        		System.out.println("เป็นที่คาร์หนึ่งนะ");
+        		//System.out.println("เป็นที่คาร์หนึ่งนะ");
 			}
         } 
         
@@ -119,10 +113,27 @@ public class GameScreen extends ScreenAdapter {
         	if (car2Rectangle.overlaps(frogRectangle)) {
         		frog.position.x = (FrogGame.WIDTH/2-20);
         		frog.position.y = 0;
-    		System.out.println("เป็นที่คาร์สองนะ");
+        		world.life--;
+        		
+    		//System.out.println("เป็นที่คาร์สองนะ");
 			}
         } 
 	}
+    
+    public void checkLife() {
+    	if (world.life<=0){
+    		worldRenderer.renderGameEnd();
+    		if(Gdx.input.isKeyJustPressed(Keys.ENTER)){
+    			world.life = 10;
+    		}
+    	}
+    		
+   }
+    public void winGame() {
+    	if(frog.position.y >= (float)(17.0/18*FrogGame.HEIGHT)){
+    		worldRenderer.renderWinGame();
+    	}
+    }
     
     @SuppressWarnings("static-access")
 	public void setFrogRectangle() {
