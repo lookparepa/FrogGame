@@ -12,17 +12,21 @@ import com.badlogic.gdx.utils.Array;
 
 public class GameScreen extends ScreenAdapter {
 
+	//private FrogGame frogGame;
+	//private Texture frogImg;
 	Frog frog;
 	World world;
 	WorldRenderer worldRenderer;
 	Rectangle frogRectangle = new Rectangle();
 	Array<Rectangle> car1sRectangle = new Array<Rectangle>();
 	Array<Rectangle> car2sRectangle = new Array<Rectangle>();
+	int a = 0;
 	Texture frogImg;
 	Texture carImg;
 	Texture car2Img;
+	BitmapFont font;
 	SpriteBatch batch;
-	int a = 0;
+	
  
     public GameScreen(FrogGame frogGame) {
     	frogImg = new Texture("frog.png");
@@ -30,32 +34,31 @@ public class GameScreen extends ScreenAdapter {
     	car2Img = new Texture("car2.png");
     	
     	world = new World(frogGame);
-    	
     	batch = frogGame.batch;
     	setCarsRectangleValue();
     	worldRenderer = new WorldRenderer(frogGame, world);
     	frog = world.getFrog();
-    	
     	frogRectangle.x = frog.position.x;
     	frogRectangle.y = frog.position.y;
-    	
     	frogRectangle.height = (float)0.8*frogImg.getHeight();
     	frogRectangle.width = (float)0.8*frogImg.getWidth();
     }
         
     @Override
     public void render(float delta) {
+//    	System.out.println(delta);
     	update(delta); 
-    	update2(delta);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        worldRenderer.render(delta);    
+        worldRenderer.render(delta);
+       
         if(a==0){
         	worldRenderer.renderGameTitle();
         	if(Gdx.input.isKeyJustPressed(Keys.ENTER)){
         		a++;
         	}
-        }        
+        }
+        
         System.out.println(world.life);
         checkLife();
         winGame();
@@ -76,9 +79,6 @@ public class GameScreen extends ScreenAdapter {
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
         	frog.move(Frog.DIRECTION_LEFT);
         }
-    }
-   
-    public void update2(float delta) {
         
         frogRectangle.x = frog.position.x;
     	frogRectangle.y = frog.position.y;
@@ -106,7 +106,7 @@ public class GameScreen extends ScreenAdapter {
         		
         		//System.out.println("เป็นที่คาร์หนึ่งนะ");
 			}
-        }
+        } 
         
         i = 0;
         for (Rectangle car2Rectangle : this.car2sRectangle) {
@@ -114,18 +114,17 @@ public class GameScreen extends ScreenAdapter {
         		frog.position.x = (FrogGame.WIDTH/2-20);
         		frog.position.y = 0;
         		world.life--;
-        	}
+        		
     		//System.out.println("เป็นที่คาร์สองนะ");
 			}
-        
-}
+        } 
+	}
     
     public void checkLife() {
-    	if (world.life <= 0){
+    	if (world.life<=0){
     		worldRenderer.renderGameEnd();
     		if(Gdx.input.isKeyJustPressed(Keys.ENTER)){
     			world.life = 10;
-    			setStart();
     		}
     	}
     		
@@ -133,17 +132,7 @@ public class GameScreen extends ScreenAdapter {
     public void winGame() {
     	if(frog.position.y >= (float)(17.0/18*FrogGame.HEIGHT)){
     		worldRenderer.renderWinGame();
-    		if(Gdx.input.isKeyJustPressed(Keys.ENTER)){
-    			world.life = 10;
-    			setStart();
-    		}
     	}
-    }
-    
-    public void setStart(){
-    	a = 0;
-    	frog.position.y = 0;
-    	frog.position.x = (float)(FrogGame.WIDTH/2-20);
     }
     
     @SuppressWarnings("static-access")
@@ -152,25 +141,23 @@ public class GameScreen extends ScreenAdapter {
 		frogRectangle.y = frog.position.y;
 	}
     
-   public void setCarsRectangleValue() {
-		for (Car car: this.world.cars)	{
-			Rectangle car1Rectangle = new Rectangle();
-			car1Rectangle.x = car.getPosition().x;
-			car1Rectangle.y = car.getPosition().y;
-			car1Rectangle.width = (float) 0.3*carImg.getWidth();
-			car1Rectangle.height = (float) 0.3*carImg.getHeight();
-			car1sRectangle.add(car1Rectangle);
-		
-				for (Car2 car2: this.world.car2s)	{
-					Rectangle car2Rectangle = new Rectangle();
-					car2Rectangle.x = car2.getPosition().x;
-					car2Rectangle.y = car2.getPosition().y;
-					car2Rectangle.width = (float) 0.3*car2Img.getWidth();
-					car2Rectangle.height = (float) 0.3*car2Img.getHeight();
-					car2sRectangle.add(car2Rectangle);	
-				}
-		}
-	} 
-    
-   
+    public void setCarsRectangleValue() {
+    	for (Car car: this.world.cars)	{
+    		Rectangle car1Rectangle = new Rectangle();
+    		car1Rectangle.x = car.getPosition().x;
+    		car1Rectangle.y = car.getPosition().y;
+    		car1Rectangle.width = (float) 0.4*carImg.getWidth();
+    		car1Rectangle.height = (float) 0.4*carImg.getHeight();
+    		car1sRectangle.add(car1Rectangle);
+    		
+    	for (Car2 car2: this.world.car2s)	{
+        	Rectangle car2Rectangle = new Rectangle();
+        	car2Rectangle.x = car2.getPosition().x;
+       		car2Rectangle.y = car2.getPosition().y;
+       		car2Rectangle.width = (float) 0.4*car2Img.getWidth();
+       		car2Rectangle.height = (float) 0.4*car2Img.getHeight();
+       		car2sRectangle.add(car2Rectangle);	
+    	}
+    }
+}
 }

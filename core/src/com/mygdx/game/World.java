@@ -12,8 +12,8 @@ public class World {
 	FrogGame frogGame;
 	int life = 10;
 	
-	static List <Car> cars = new ArrayList <Car> ();
-	static List <Car2> car2s = new ArrayList <Car2> ();	
+	List <Car> cars = new ArrayList <Car> ();
+	List <Car2> car2s = new ArrayList <Car2> ();	
 	World(FrogGame frogGame) {
 		this.frogGame = frogGame;
 		frog = new Frog();
