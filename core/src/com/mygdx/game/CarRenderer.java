@@ -34,30 +34,26 @@ public class CarRenderer {
 	}
 	
 public void render(float delta) {
-	
+		for (Car2 car2 : this.car2s) {	
+				batch.draw(car2ImgRegion,
+        				car2.getPosition().x,car2.getPosition().y,
+        				0,0,
+        				car2Img.getWidth(),car2Img.getHeight(),
+        				1,1,
+        				0);
+        } 
+        
         for (Car car : this.cars) {
         	//System.out.println(car.getPosition().x + " " + car.getPosition().y);
         		batch.draw(carImgRegion,
         				car.getPosition().x,car.getPosition().y,
         				0,0,
         				carImg.getWidth(),carImg.getHeight(),
-        				(float)0.4,(float)0.4,
+        				1,1,
         				0);
         }
         
-       for (Car2 car2 : this.car2s) {
-        	
-				batch.draw(car2ImgRegion,
-        				car2.getPosition().x,car2.getPosition().y,
-        				0,0,
-        				car2Img.getWidth(),car2Img.getHeight(),
-        				(float)0.4,(float)0.4,
-        				0);
-        } 
-        
-        
-        
-    }
+	}
 }
 
 

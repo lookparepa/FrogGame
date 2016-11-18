@@ -38,8 +38,7 @@ public class GameScreen extends ScreenAdapter {
     	setCarsRectangleValue();
     	worldRenderer = new WorldRenderer(frogGame, world);
     	frog = world.getFrog();
-    	frogRectangle.x = frog.position.x;
-    	frogRectangle.y = frog.position.y;
+    	setFrogRectangle();
     	frogRectangle.height = (float)0.8*frogImg.getHeight();
     	frogRectangle.width = (float)0.8*frogImg.getWidth();
     }
@@ -102,9 +101,10 @@ public class GameScreen extends ScreenAdapter {
         	if (car1Rectangle.overlaps(frogRectangle)) {
         		frog.position.x = (FrogGame.WIDTH/2-20);
         		frog.position.y = 0;
+        		setFrogRectangle();
         		world.life--;
         		
-        		//System.out.println("เป็นที่คาร์หนึ่งนะ");
+//        		System.out.println("เป็นที่คาร์หนึ่งนะ");
 			}
         } 
         
@@ -113,9 +113,10 @@ public class GameScreen extends ScreenAdapter {
         	if (car2Rectangle.overlaps(frogRectangle)) {
         		frog.position.x = (FrogGame.WIDTH/2-20);
         		frog.position.y = 0;
+        		setFrogRectangle();
         		world.life--;
         		
-    		//System.out.println("เป็นที่คาร์สองนะ");
+//    		System.out.println("เป็นที่คาร์สองนะ");
 			}
         } 
 	}
@@ -154,16 +155,16 @@ public class GameScreen extends ScreenAdapter {
     		Rectangle car1Rectangle = new Rectangle();
     		car1Rectangle.x = car.getPosition().x;
     		car1Rectangle.y = car.getPosition().y;
-    		car1Rectangle.width = (float) 0.4*carImg.getWidth();
-    		car1Rectangle.height = (float) 0.4*carImg.getHeight();
+    		car1Rectangle.width = (float) carImg.getWidth();
+    		car1Rectangle.height = (float) carImg.getHeight();
     		car1sRectangle.add(car1Rectangle);
     		
     	for (Car2 car2: this.world.car2s)	{
         	Rectangle car2Rectangle = new Rectangle();
         	car2Rectangle.x = car2.getPosition().x;
        		car2Rectangle.y = car2.getPosition().y;
-       		car2Rectangle.width = (float) 0.4*car2Img.getWidth();
-       		car2Rectangle.height = (float) 0.4*car2Img.getHeight();
+       		car2Rectangle.width = (float) car2Img.getWidth();
+       		car2Rectangle.height = (float) car2Img.getHeight();
        		car2sRectangle.add(car2Rectangle);	
     	}
     }
