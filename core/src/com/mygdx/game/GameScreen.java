@@ -24,6 +24,7 @@ public class GameScreen extends ScreenAdapter {
 	Texture frogImg;
 	Texture carImg;
 	Texture car2Img;
+	Texture froglifeImg;
 	BitmapFont font;
 	SpriteBatch batch;
 	
@@ -32,6 +33,7 @@ public class GameScreen extends ScreenAdapter {
     	frogImg = new Texture("frog.png");
     	carImg = new Texture("car.png");
     	car2Img = new Texture("car2.png");
+    	froglifeImg = new Texture("froglife.png");
     	
     	world = new World(frogGame);
     	batch = frogGame.batch;
@@ -59,6 +61,7 @@ public class GameScreen extends ScreenAdapter {
         }
         
         System.out.println(world.life);
+        life(world.life);
         checkLife();
         winGame();
     }
@@ -96,7 +99,7 @@ public class GameScreen extends ScreenAdapter {
             i++;
         } 
         
-        i = 0;
+    
         for (Rectangle car1Rectangle : this.car1sRectangle) {
         	if (car1Rectangle.overlaps(frogRectangle)) {
         		frog.position.x = (FrogGame.WIDTH/2-20);
@@ -106,9 +109,10 @@ public class GameScreen extends ScreenAdapter {
         		
 //        		System.out.println("เป็นที่คาร์หนึ่งนะ");
 			}
+//        	setFrogRectangle();
         } 
         
-        i = 0;
+    
         for (Rectangle car2Rectangle : this.car2sRectangle) {
         	if (car2Rectangle.overlaps(frogRectangle)) {
         		frog.position.x = (FrogGame.WIDTH/2-20);
@@ -166,7 +170,12 @@ public class GameScreen extends ScreenAdapter {
        		car2Rectangle.width = (float) car2Img.getWidth();
        		car2Rectangle.height = (float) car2Img.getHeight();
        		car2sRectangle.add(car2Rectangle);	
+    		}
     	}
     }
-}
+    
+    public void life(int life){
+    		worldRenderer.renderLife(life);
+    }
+    
 }
