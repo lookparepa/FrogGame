@@ -125,6 +125,8 @@ public class GameScreen extends ScreenAdapter {
     		worldRenderer.renderGameEnd();
     		if(Gdx.input.isKeyJustPressed(Keys.ENTER)){
     			world.life = 10;
+    			a = 0;
+    			
     		}
     	}
     		
@@ -132,6 +134,12 @@ public class GameScreen extends ScreenAdapter {
     public void winGame() {
     	if(frog.position.y >= (float)(17.0/18*FrogGame.HEIGHT)){
     		worldRenderer.renderWinGame();
+    			if(Gdx.input.isKeyJustPressed(Keys.ENTER)){
+    				frog.position.x = (FrogGame.WIDTH/2-20);
+            		frog.position.y = 0;
+            		a = 0;
+        	}
+    			
     	}
     }
     
