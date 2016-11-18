@@ -16,15 +16,15 @@ public class Car2 {
 		switch (temp) {
 			case 0: position.x = (float) (random.nextInt(100)*500*0.4-10000); 
 					position.y = (float) (4.0/18*FrogGame.HEIGHT);
-					speed[carNumber] = 5;
+					speed[carNumber] = 12;
 					break;
 			case 1: position.x = (float) (random.nextInt(100)*500*0.4-10000); 
 					position.y = (float) (9.0/18*FrogGame.HEIGHT);
-					speed[carNumber] = 5;
+					speed[carNumber] = 9;
 					break;
 			case 2: position.x = (float) (random.nextInt(100)*500*0.4-10000); 
 					position.y = (float) (14.0/18*FrogGame.HEIGHT);
-					speed[carNumber] = 5;
+					speed[carNumber] = 10;
 					break;
 		}
 	}
