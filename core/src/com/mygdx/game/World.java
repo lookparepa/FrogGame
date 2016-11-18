@@ -13,8 +13,8 @@ public class World {
 	FrogGame frogGame;
 	
 	Sound sound = Gdx.audio.newSound(Gdx.files.internal("car_sound.mp3"));
+	Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("blood.mp3"));
 	
-
 	int life = 10;
 	
 	List <Car> cars = new ArrayList <Car> ();
@@ -28,8 +28,13 @@ public class World {
 			car2s.add(new Car2(i));
 		}
 	}
+	
 	Frog getFrog(){
 		return frog;
+	}
+	
+	public void sound2(){
+		sound2.play();
 	}
 	
 }

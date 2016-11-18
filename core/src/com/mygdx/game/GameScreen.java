@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -28,6 +29,7 @@ public class GameScreen extends ScreenAdapter {
 	BitmapFont font;
 	SpriteBatch batch;
 	
+	
  
     public GameScreen(FrogGame frogGame) {
     	frogImg = new Texture("frog.png");
@@ -43,6 +45,8 @@ public class GameScreen extends ScreenAdapter {
     	setFrogRectangle();
     	frogRectangle.height = (float)0.8*frogImg.getHeight();
     	frogRectangle.width = (float)0.8*frogImg.getWidth();
+    	
+    	
     }
         
     @Override
@@ -99,14 +103,14 @@ public class GameScreen extends ScreenAdapter {
             i++;
         } 
         
-    
+        
         for (Rectangle car1Rectangle : this.car1sRectangle) {
         	if (car1Rectangle.overlaps(frogRectangle)) {
         		frog.position.x = (FrogGame.WIDTH/2-20);
         		frog.position.y = 0;
         		setFrogRectangle();
-        		world.life--;
-        		
+        		world.life--;	 
+        		world.sound2();
 //        		System.out.println("เป็นที่คาร์หนึ่งนะ");
 			}
 //        	setFrogRectangle();
@@ -119,7 +123,7 @@ public class GameScreen extends ScreenAdapter {
         		frog.position.y = 0;
         		setFrogRectangle();
         		world.life--;
-        		
+        		world.sound2();
 //    		System.out.println("เป็นที่คาร์สองนะ");
 			}
         } 
